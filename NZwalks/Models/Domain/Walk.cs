@@ -1,4 +1,4 @@
-namespace AspCoreWebApiUdemy.API.Models.Domain
+namespace NZWalks.API.Models.Domain
 {
     public class Walk
     {
