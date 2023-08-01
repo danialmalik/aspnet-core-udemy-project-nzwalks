@@ -1,39 +1,50 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NZWalks.API.Models.Domain;
+using NZWalks.API.Data;
 
 
-namespace NZWalks
+namespace NZWalks.API.Controllers
 {
     // /api/regions
     [Route("api/[controller]")]
     [ApiController]
     public class RegionsController : ControllerBase
     {
+        private readonly NZWalksDbContext dbContext;
+
+        public RegionsController(NZWalksDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+
+        }
+
         // GET ALL REGIONS
         // GET /api/regions
         [HttpGet]
         public IActionResult GetAll()
         {
-            var regions = new List<Region>
-            {
-                new Region
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Test Region",
-                    Code = "TR",
-                    RegionImgUrl = "https://images.pexels.com/photos/12587261/pexels-photo-12587261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                },
-                new Region
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Test Region 2",
-                    Code = "TR2",
-                    RegionImgUrl = "https://images.pexels.com/photos/12587261/pexels-photo-12587261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                }
-            };
-
+            var regions = dbContext.Regions.ToList();
             return Ok(regions);
+        }
+
+        // GET REGION by ID
+        // GET /api/regions/{id}
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult GetById([FromRoute] Guid id)
+        {
+            // Find using PK only.
+            var region = dbContext.Regions.Find(id);
+
+            // To search based on any field, use the FindOrDefault method
+            // var region = dbContext.Regions.FindOrDefault(x=>x.id == id);
+
+            if (region == null)
+            {
+                return NotFound();
+            }
+            return Ok(region);
         }
     }
 

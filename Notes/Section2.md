@@ -13,7 +13,7 @@ Contains linux alternative commands to visual studio operations.
 - Run project
 
 ```sh
-dotnet run --launch-profile {http|https}
+dotnet run --launch-profile {http|https} --project NZwalks
 ```
 
 Open swagger at http://localhost:5292/swagger/index.html
