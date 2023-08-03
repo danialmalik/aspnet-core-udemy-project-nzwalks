@@ -31,9 +31,41 @@ namespace NZWalks.API.Repositories
             return walk;
         }
 
-        public async Task<List<Walk>> GetAllAsync()
+        public async Task<List<Walk>> GetAllAsync(string? filterOn = null, string? filterQuery = null)
         {
-            return await dbContext.Walks.Include(x => x.Difficulty).Include("Region").ToListAsync();
+            var walks = dbContext.Walks.Include("Difficulty").Include("Region").AsQueryable();
+            // Filtering
+            if (!string.IsNullOrWhiteSpace(filterOn) && !string.IsNullOrWhiteSpace(filterQuery))
+            {
+                if (filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = walks.Where(x => x.Name.Contains(filterQuery));
+                }
+
+                // switch (filterOn.ToLower())
+                // {
+                //     case "name":
+                //         walks = walks.Where(x => x.Name.ToLower().Contains(filterQuery.ToLower()));
+                //         break;
+                //     case "description":
+                //         walks = walks.Where(x => x.Description.ToLower().Contains(filterQuery.ToLower()));
+                //         break;
+                //     case "lengthinkm":
+                //         walks = walks.Where(x => x.LengthInKm.ToString().ToLower().Contains(filterQuery.ToLower()));
+                //         break;
+                //     case "region":
+                //         walks = walks.Where(x => x.Region.Name.ToLower().Contains(filterQuery.ToLower()));
+                //         break;
+                //     case "difficulty":
+                //         walks = walks.Where(x => x.Difficulty.Name.ToLower().Contains(filterQuery.ToLower()));
+                //         break;
+                //     default:
+                //         break;
+                // }
+            }
+
+            return await walks.ToListAsync();
+            // return await dbContext.Walks.Include(x => x.Difficulty).Include("Region").ToListAsync();
         }
 
         public async Task<Walk?> GetByIdAsync(Guid id)
