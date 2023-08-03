@@ -46,7 +46,7 @@ namespace NZWalks
         // GET Walk by ID
         // GET: /api/walks/{id}
         [HttpGet]
-        [Route("{id:guid}")]
+        [Route("{id:Guid}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             var walk = await walkRepository.GetByIdAsync(id);
@@ -60,7 +60,7 @@ namespace NZWalks
         // UPDATE Walk by ID
         // PUT: /api/walks/{id}
         [HttpPut]
-        [Route("{id:guid}")]
+        [Route("{id:Guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, UpdateWalkRequestDto updateWalkRequestDto)
         {
             var walk = mapper.Map<Walk>(updateWalkRequestDto);
@@ -74,6 +74,21 @@ namespace NZWalks
 
             return Ok(mapper.Map<WalkDto>(walk));
         }
+
+        // DELETE walk by ID
+        // DELETE: /api/walks/{id}
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            var walk = await walkRepository.DeleteAsync(id);
+            if (walk == null)
+            {
+                return NotFound();
+            }
+            return Ok(mapper.Map<WalkDto>(walk));
+        }
+
 
     }
 }
