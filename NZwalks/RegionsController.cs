@@ -41,7 +41,7 @@ namespace NZWalks.API.Controllers
             //         Id = regionDomain.Id,
             //         Code = regionDomain.Code,
             //         Name = regionDomain.Name,
-            //         RegionImgUrl = regionDomain.RegionImgUrl,
+            //         RegionImageUrl = regionDomain.RegionImageUrl,
             //     });
             // }
 
@@ -67,7 +67,7 @@ namespace NZWalks.API.Controllers
                 Id = region.Id,
                 Code = region.Code,
                 Name = region.Name,
-                RegionImgUrl = region.RegionImgUrl,
+                RegionImageUrl = region.RegionImageUrl,
 
             };
 

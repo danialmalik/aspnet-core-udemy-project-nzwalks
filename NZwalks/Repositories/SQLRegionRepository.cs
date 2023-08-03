@@ -54,7 +54,7 @@ namespace NZWalks.API.Repositories
             }
             existingRegion.Code = region.Code;
             existingRegion.Name = region.Name;
-            existingRegion.RegionImgUrl = region.RegionImgUrl;
+            existingRegion.RegionImageUrl = region.RegionImageUrl;
 
             await dbContext.SaveChangesAsync();
 

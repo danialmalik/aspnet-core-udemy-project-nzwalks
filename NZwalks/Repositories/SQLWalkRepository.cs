@@ -55,7 +55,7 @@ namespace NZWalks.API.Repositories
             existingWalk.Description = walk.Description;
             existingWalk.LengthInKm = walk.LengthInKm;
             existingWalk.RegionId = walk.RegionId;
-            existingWalk.WalkImgUrl = walk.WalkImgUrl;
+            existingWalk.WalkImageUrl = walk.WalkImageUrl;
             existingWalk.DifficultyId = walk.DifficultyId;
 
             await dbContext.SaveChangesAsync();
