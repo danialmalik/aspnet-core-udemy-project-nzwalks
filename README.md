@@ -15,3 +15,9 @@ dotnet run --launch-profile {http|https} --project NZwalks.API
 ```sh
 dotnet watch run --launch-profile {http|https} --project NZwalks.API
 ```
+
+- Run UI
+
+```sh
+dotnet run --project NZWalks.UI
+```

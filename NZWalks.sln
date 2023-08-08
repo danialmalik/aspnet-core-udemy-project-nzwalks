@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NZWalks.API", "NZWalks.API\NZWalks.csproj", "{39B84D30-3472-4321-97D0-EA1B011F0B30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NZWalks.API", "NZWalks.API\NZWalks.API.csproj", "{39B84D30-3472-4321-97D0-EA1B011F0B30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NZWalks.UI", "NZWalks.UI\NZWalks.UI.csproj", "{94153401-0DC3-4394-8501-6CFFC86E56B8}"
 EndProject

@@ -14,6 +14,7 @@ namespace NZWalks.API.Controllers
     // Version can either be in query param `?api-version=1.0`
     // or in the URL like /api/v1/regions
     [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/[controller]")] // Without a version
     [ApiController]
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
@@ -41,7 +42,7 @@ namespace NZWalks.API.Controllers
         // GET /api/regions
         [HttpGet]
         [MapToApiVersion("1.0")]
-        [Authorize(Roles = "Reader")]
+        // [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAll()
         {
             logger.LogDebug("GetAllRegions method was invoked.");

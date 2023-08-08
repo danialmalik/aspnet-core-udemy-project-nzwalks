@@ -30,7 +30,7 @@ dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 
 Then add a new API controller using
 ```sh
-dotnet aspnet-codegenerator -p NZWalks.csproj controller -name StudentsController   -api
+dotnet aspnet-codegenerator -p NZWalks.API.csproj controller -name StudentsController   -api
 ```
 
 Add packages for Entity Framework
