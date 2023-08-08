@@ -11,8 +11,12 @@ using System.Text.Json;
 namespace NZWalks.API.Controllers
 {
     // /api/regions
-    [Route("api/[controller]")]
+    // Version can either be in query param `?api-version=1.0`
+    // or in the URL like /api/v1/regions
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class RegionsController : ControllerBase
     {
         private readonly NZWalksDbContext dbContext;
@@ -36,6 +40,7 @@ namespace NZWalks.API.Controllers
         // GET ALL REGIONS
         // GET /api/regions
         [HttpGet]
+        [MapToApiVersion("1.0")]
         [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAll()
         {
@@ -57,6 +62,21 @@ namespace NZWalks.API.Controllers
 
             string message = $"Finished GetAllRegions with data: {JsonSerializer.Serialize(regionsDto)}";
             logger.LogInformation(message: message);
+            // Return DTOs
+            return Ok(regionsDto);
+        }
+
+        // GET ALL REGIONS V2
+        // GET /api/v2/regions
+        [HttpGet]
+        [MapToApiVersion("2.0")]
+        [Authorize(Roles = "Reader")]
+        public async Task<IActionResult> GetAllV2()
+        {
+            var regions = await regionRepository.GetAllAsync();
+
+            var regionsDto = mapper.Map<List<RegionDtoV2>>(regions);
+
             // Return DTOs
             return Ok(regionsDto);
         }

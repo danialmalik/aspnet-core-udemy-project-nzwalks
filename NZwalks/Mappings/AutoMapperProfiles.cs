@@ -9,6 +9,9 @@ namespace NZWalks.API.Mappings
         public AutoMapperProfiles()
         {
             CreateMap<Region, RegionDto>().ReverseMap();
+            CreateMap<RegionDtoV2, Region>()
+            .ForMember(dest => dest.Name, opt => opt.MapFrom("RegionName"))
+            .ReverseMap();
             CreateMap<AddRegionRequestDto, Region>().ReverseMap();
             CreateMap<UpdateRegionRequestDto, Region>().ReverseMap();
 
