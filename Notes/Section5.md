@@ -4,5 +4,5 @@
 - Add controller for walks
 
 ```sh
-dotnet aspnet-codegenerator [-p NZwalks] controller -name WalkssController -api
+dotnet aspnet-codegenerator [-p NZwalks.API] controller -name WalkssController -api
 ```

@@ -6,12 +6,12 @@
 - Run project
 
 ```sh
-dotnet run --launch-profile {http|https} --project NZwalks
+dotnet run --launch-profile {http|https} --project NZwalks.API
 ```
 
 
 - Run project in watch mode
 
 ```sh
-dotnet watch run --launch-profile {http|https} --project NZwalks
+dotnet watch run --launch-profile {http|https} --project NZwalks.API
 ```

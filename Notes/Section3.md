@@ -4,5 +4,5 @@
 - Create controller using
 
 ```sh
-dotnet aspnet-codegenerator -p NZwalks controller -name RegionsController -api
+dotnet aspnet-codegenerator -p NZwalks.API controller -name RegionsController -api
 ```
