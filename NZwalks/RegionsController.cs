@@ -43,7 +43,6 @@ namespace NZWalks.API.Controllers
             var regions = await regionRepository.GetAllAsync();
 
             var regionsDto = mapper.Map<List<RegionDto>>(regions);
-
             // // Map domain models to DTO
             // var regionsDto = new List<RegionDto>();
             // foreach(var regionDomain in regions)
