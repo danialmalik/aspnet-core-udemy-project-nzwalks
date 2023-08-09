@@ -2,6 +2,7 @@
 
 **Course link:** https://accelerate.udemy.com/course/build-rest-apis-with-aspnet-core-web-api-entity-framework/
 
+Dotnet CLI reference: https://learn.microsoft.com/en-us/dotnet/core/tools/
 
 - Run project
 
